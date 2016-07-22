@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'BalloonUI_Example' do
+  pod 'BalloonUI', :path => '../'
+
+  target 'BalloonUI_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
