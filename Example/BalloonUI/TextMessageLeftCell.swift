@@ -16,7 +16,7 @@ import Reusable
 import ViewSizeCalculator
 import Then
 
-final class TextMessageLeftCell: UICollectionViewCell, Reusable {
+final class TextMessageLeftCell: TextMessageCell {
     
     // MARK: - Public
     
@@ -29,14 +29,19 @@ final class TextMessageLeftCell: UICollectionViewCell, Reusable {
         }
         
         return Static.cal.calculate(width: collectionView.bounds.width, height: nil, cacheKey: viewModel.cacheKey) { (cell) in
-            cell.update(viewModel: viewModel)
+            cell.update(viewModel: viewModel, updateType: .Sizing)
         }
     }
     
-    func update(viewModel viewModel: TextMessageCellViewModel) {
+    func update(viewModel viewModel: TextMessageCellViewModel, updateType: UpdateType) {
+        
+        var measure = Measure(name: "Left: \(updateType)")
+        measure.start()
         
         label?.attributedText = viewModel.attributedText
         contentView.invalidateIntrinsicContentSize()
+        
+        measure.end()
     }
     
     override init(frame: CGRect) {

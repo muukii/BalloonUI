@@ -36,6 +36,9 @@ public class BalloonLabel: BalloonView {
         textView.showsVerticalScrollIndicator = false
         textView.layer.rasterizationScale = UIScreen.mainScreen().scale
         textView.layer.shouldRasterize = true
+        textView.textContainerInset = UIEdgeInsetsZero
+        textView.textContainer.lineFragmentPadding = 0
+        
         textView.linkTextAttributes = [
             NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue,
             NSForegroundColorAttributeName: UIColor.blueColor()

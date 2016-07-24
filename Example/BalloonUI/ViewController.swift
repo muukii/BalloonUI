@@ -47,14 +47,14 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
             
             let cell = collectionView.dequeueReusableCell(indexPath: indexPath, cellType: TextMessageRightCell.self)
             
-            cell.update(viewModel: TextMessageCellViewModel(message: message))
+            cell.update(viewModel: TextMessageCellViewModel(message: message), updateType: .Normal)
             return cell
         }
         else {
             
             let cell = collectionView.dequeueReusableCell(indexPath: indexPath, cellType: TextMessageLeftCell.self)
             
-            cell.update(viewModel: TextMessageCellViewModel(message: message))
+            cell.update(viewModel: TextMessageCellViewModel(message: message), updateType: .Normal)
             return cell
         }
     }
