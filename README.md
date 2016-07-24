@@ -5,11 +5,11 @@
 [![License](https://img.shields.io/cocoapods/l/BalloonUI.svg?style=flat)](http://cocoapods.org/pods/BalloonUI)
 [![Platform](https://img.shields.io/cocoapods/p/BalloonUI.svg?style=flat)](http://cocoapods.org/pods/BalloonUI)
 
-## Example
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+![](shot1.png)
 
 ## Requirements
+
+iOS 8.0 +
 
 ## Installation
 
