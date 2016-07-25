@@ -30,7 +30,7 @@ final class TextMessageLeftCell: TextMessageCell {
         }
         
         return Static.cal.calculate(width: collectionView.bounds.width, height: nil, cacheKey: viewModel.cacheKey) { (cell) in
-            cell.update(viewModel: viewModel, updateType: .Sizing)
+            cell.update(viewModel: viewModel, updateType: .Sizing)            
         }
     }
     

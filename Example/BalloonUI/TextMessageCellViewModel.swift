@@ -14,7 +14,7 @@ final class TextMessageCellViewModel {
     
     let message: Message
     
-    let attributedText: NSAttributedString
+    let attributedText: NSMutableAttributedString
     let text: String
     let cacheKey: String
     
@@ -22,11 +22,13 @@ final class TextMessageCellViewModel {
         self.message = message
         
         self.text = message.text
-        self.attributedText = message.text.attributed {
+        
+        self.attributedText = NSMutableAttributedString(attributedString: message.text.attributed {
             TextAttributes()
                 .foregroundColor(UIColor.lightGrayColor())
-        }
-        
+                .font(UIFont.systemFontOfSize(16))
+            }
+        )
         self.cacheKey = String(message.text.hash)
     }
 }

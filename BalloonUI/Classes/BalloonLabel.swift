@@ -96,7 +96,7 @@ public class BalloonLabel: BalloonView {
         let height = ceil(size.height * scale) * (1.0 / scale)
         
         let roundedSize = CGSize(
-            width: width + (leftOffset + rightOffset),
+            width: width + (leftOffset + rightOffset) + (label.textContainerInset.right + label.textContainerInset.left),
             height: height + (label.textContainerInset.top + label.textContainerInset.bottom)
         )
         return roundedSize
@@ -109,7 +109,7 @@ public class BalloonLabel: BalloonView {
         textView.editable = false
         textView.showsHorizontalScrollIndicator = false
         textView.showsVerticalScrollIndicator = false
-        textView.textContainerInset = UIEdgeInsetsZero
+        textView.textContainerInset = UIEdgeInsetsMake(8, 8, 8, 8)
         textView.textContainer.lineFragmentPadding = 0
         textView.layoutManager.allowsNonContiguousLayout = true
         

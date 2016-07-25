@@ -20,7 +20,10 @@ class TextMessageCell: UICollectionViewCell, Reusable {
         
         label?.attributedText = viewModel.attributedText
 //        label.text = viewModel.text
-        contentView.invalidateIntrinsicContentSize()
+
+        if updateType == .Sizing {
+            contentView.invalidateIntrinsicContentSize()
+        }
     }
 }
 
