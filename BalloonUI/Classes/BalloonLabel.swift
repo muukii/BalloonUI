@@ -28,38 +28,6 @@ public class BalloonLabel: BalloonView {
     public var didTapUrl: ((url: NSURL) -> Void)?
     public var enableCenteringCharactor: Bool = true
     
-    public let label: BalloonLabelTextView = {
-        let textView = BalloonLabelTextView(frame: CGRect.zero)
-        textView.scrollEnabled = false
-        textView.editable = false
-        textView.showsHorizontalScrollIndicator = false
-        textView.showsVerticalScrollIndicator = false
-        textView.layer.rasterizationScale = UIScreen.mainScreen().scale
-        textView.layer.shouldRasterize = true
-        textView.textContainerInset = UIEdgeInsetsZero
-        textView.textContainer.lineFragmentPadding = 0
-        
-        textView.linkTextAttributes = [
-            NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue,
-            NSForegroundColorAttributeName: UIColor.blueColor()
-        ]
-        textView.textContainerInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)        
-        return textView
-    }()
-    
-    public struct Margin {
-        var left: NSLayoutConstraint
-        var top: NSLayoutConstraint
-        var right: NSLayoutConstraint
-        var bottom: NSLayoutConstraint
-        init(left: NSLayoutConstraint, top: NSLayoutConstraint, right: NSLayoutConstraint, bottom: NSLayoutConstraint) {
-            self.left = left
-            self.top = top
-            self.right = right
-            self.bottom = bottom
-        }
-    }
-    
     public var leftOffset: CGFloat {
         switch self.type {
         case .Left:
@@ -78,53 +46,32 @@ public class BalloonLabel: BalloonView {
         }
     }
     
-    public func labelMargin() -> UIEdgeInsets {
-        return UIEdgeInsets(top: 9, left: 10, bottom: 8, right: 10)
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        var frame = bounds
+        
+        frame.origin.x += leftOffset
+        frame.size.width -= (leftOffset + rightOffset)
+        
+        label.frame = frame
     }
-    
-    public var labelMarginContraints: Margin!
     
     public override func configureView() {
         super.configureView()
-        self.label.delegate = self
-        self.label.backgroundColor = UIColor.clearColor()
-        self.label.translatesAutoresizingMaskIntoConstraints = false
-        self.translatesAutoresizingMaskIntoConstraints = false
+        label.delegate = self
+        label.backgroundColor = UIColor.clearColor()
+        label.dataDetectorTypes = UIDataDetectorTypes.Link
         
-        self.label.dataDetectorTypes = UIDataDetectorTypes.Link
-        
-        self.addSubview(self.label)
-        
-        constrain(self.label) {
-            
-            let superview = $0.superview!
-            
-            let margin = Margin(
-                left: $0.left == superview.left,
-                top: $0.top == superview.top,
-                right: superview.right == $0.right,
-                bottom: superview.bottom == $0.bottom
-            )
-            
-            self.labelMarginContraints = margin
-        }
+        addSubview(label)
         
         let gesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPressGesture))
-        self.addGestureRecognizer(gesture)
-    }
-    
-    public override func updateConstraints() {
-        
-        self.labelMarginContraints.left.constant = self.labelMargin().left + self.leftOffset
-        self.labelMarginContraints.top.constant = self.labelMargin().top
-        self.labelMarginContraints.right.constant = self.labelMargin().right + self.rightOffset
-        self.labelMarginContraints.bottom.constant = self.labelMargin().bottom
-        super.updateConstraints()
+        addGestureRecognizer(gesture)
     }
     
     public var preferredMaxLayoutWidth: CGFloat = 0 {
         didSet {
-            self.label.preferredMaxLayoutWidth = self.preferredMaxLayoutWidth - (self.labelMargin().left + self.labelMargin().right + self.leftOffset + self.rightOffset)
+            self.label.preferredMaxLayoutWidth = self.preferredMaxLayoutWidth
         }
     }
     
@@ -133,27 +80,46 @@ public class BalloonLabel: BalloonView {
             return self.label.attributedText
         }
         set {
-            
-            self.label.attributedText = newValue
-            
-            guard let text = newValue else {
-                return
-            }
-            
-            if self.enableCenteringCharactor == true && text.string.characters.count == 1 {
-                if self.label.textAlignment != .Center {
-                    self.label.textAlignment = .Center
-                }
-            } else {
-                if self.label.textAlignment != .Left {
-                    self.label.textAlignment = .Left
-                }
-            }
-            
-            self.invalidateIntrinsicContentSize()
+            label.attributedText = newValue
+            invalidateIntrinsicContentSize()
         }
     }
+    
+    public override func intrinsicContentSize() -> CGSize {
         
+        let targetSize = CGSize(width: self.preferredMaxLayoutWidth, height: CGFloat.infinity)
+        let size = label.attributedText.boundingRectWithSize(targetSize, options: [.UsesLineFragmentOrigin, .UsesFontLeading], context: nil).size
+        
+        let scale = UIScreen.mainScreen().scale
+        
+        let width = ceil(size.width * scale) * (1.0 / scale)
+        let height = ceil(size.height * scale) * (1.0 / scale)
+        
+        let roundedSize = CGSize(
+            width: width + (leftOffset + rightOffset),
+            height: height + (label.textContainerInset.top + label.textContainerInset.bottom)
+        )
+        return roundedSize
+    }
+    
+    
+    private let label: BalloonLabelTextView = {
+        let textView = BalloonLabelTextView(frame: CGRect.zero)
+        textView.scrollEnabled = false
+        textView.editable = false
+        textView.showsHorizontalScrollIndicator = false
+        textView.showsVerticalScrollIndicator = false
+        textView.textContainerInset = UIEdgeInsetsZero
+        textView.textContainer.lineFragmentPadding = 0
+        textView.layoutManager.allowsNonContiguousLayout = true
+        
+        textView.linkTextAttributes = [
+            NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue,
+            NSForegroundColorAttributeName: UIColor.blueColor()
+        ]
+        return textView
+    }()
+    
     // MARK: UIResponder
     
     private dynamic func handleLongPressGesture(sender: UILongPressGestureRecognizer) {
@@ -185,19 +151,11 @@ extension BalloonLabel: UITextViewDelegate {
     
     public func textView(textView: UITextView, shouldInteractWithURL URL: NSURL, inRange characterRange: NSRange) -> Bool {
         
-        let urlString: NSString = URL.scheme
-        if urlString.rangeOfString("http").location != NSNotFound ||
-            urlString.rangeOfString("Http").location != NSNotFound ||
-            urlString.rangeOfString("https").location != NSNotFound ||
-            urlString.rangeOfString("Https").location != NSNotFound
-        {
-            self.didTapUrl?(url: URL)
-        }
+        didTapUrl?(url: URL)
         return false
     }
     
     public func textView(textView: UITextView, shouldInteractWithTextAttachment textAttachment: NSTextAttachment, inRange characterRange: NSRange) -> Bool {
         return false
     }
-    
 }

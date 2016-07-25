@@ -29,4 +29,18 @@ extension Message {
             Message(fromMe: json["fromMe"].boolValue, text: json["text"].stringValue)            
         }
     }
+    
+    static func importToViewModelFromJSON() -> [TextMessageCellViewModel] {
+        
+        let path = NSBundle.mainBundle().pathForResource("messages", ofType: "json")!
+        let data = NSData(contentsOfFile: path)!
+        let json = JSON(data: data)
+        
+        return json["data"].arrayValue.map { json -> TextMessageCellViewModel in
+            
+            TextMessageCellViewModel(message:
+                Message(fromMe: json["fromMe"].boolValue, text: json["text"].stringValue)
+            )
+        }
+    }
 }

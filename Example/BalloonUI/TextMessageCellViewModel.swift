@@ -15,14 +15,16 @@ final class TextMessageCellViewModel {
     let message: Message
     
     let attributedText: NSAttributedString
+    let text: String
     let cacheKey: String
     
     init(message: Message) {
         self.message = message
         
+        self.text = message.text
         self.attributedText = message.text.attributed {
             TextAttributes()
-                .foregroundColor(UIColor.whiteColor())
+                .foregroundColor(UIColor.lightGrayColor())
         }
         
         self.cacheKey = String(message.text.hash)

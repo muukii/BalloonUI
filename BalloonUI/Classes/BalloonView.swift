@@ -133,11 +133,6 @@ public class BalloonView: UIView {
         return super.layer as! CAShapeLayer
     }
     
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-  
-    }
-    
     public override func layoutSublayersOfLayer(layer: CALayer) {
         super.layoutSublayersOfLayer(layer)
         CATransaction.begin()
@@ -172,7 +167,7 @@ public class BalloonView: UIView {
     
     // MARK: - Private    
     
-    private class func leftBalloonPath(frame: CGRect) -> CGPath {
+    private static func leftBalloonPath(frame: CGRect) -> CGPath {
         let leftBalloonPath = UIBezierPath()
         leftBalloonPath.moveToPoint(
             CGPoint(x: frame.minX + 0.21, y: frame.minY + 4.78))
@@ -226,7 +221,7 @@ public class BalloonView: UIView {
         return leftBalloonPath.CGPath
     }
     
-    private class func rigthBalloonPath(frame: CGRect) -> CGPath {
+    private static func rigthBalloonPath(frame: CGRect) -> CGPath {
         let rightBalloonPath = UIBezierPath()
         rightBalloonPath.moveToPoint(
             CGPoint(x: frame.maxX - 0.21, y: frame.minY + 4.78))

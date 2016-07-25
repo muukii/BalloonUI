@@ -33,17 +33,6 @@ final class TextMessageRightCell: TextMessageCell {
         }
     }
     
-    func update(viewModel viewModel: TextMessageCellViewModel, updateType: UpdateType) {
-        
-        var measure = Measure(name: "Right: \(updateType)", threshold: 1 / 60)
-        measure.start()
-        
-        label?.attributedText = viewModel.attributedText
-        contentView.invalidateIntrinsicContentSize()
-        
-        measure.end()
-    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setup()
@@ -51,11 +40,6 @@ final class TextMessageRightCell: TextMessageCell {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        label?.attributedText = nil
     }
     
     override func layoutSublayersOfLayer(layer: CALayer) {
@@ -66,7 +50,7 @@ final class TextMessageRightCell: TextMessageCell {
         
         self.backgroundColor = UIColor.whiteColor()
         
-        let _label = BalloonLabel().then {
+        let _label = Balloon().then {
             $0.type = .Right
             $0.balloonColor = UIColor(red:0.56, green:0.84, blue:0.92, alpha:1.00)
             $0.preferredMaxLayoutWidth = UIScreen.mainScreen().bounds.width - 100
@@ -85,12 +69,4 @@ final class TextMessageRightCell: TextMessageCell {
         
         label = _label
     }
-    
-    weak var label: BalloonLabel!
-    weak var profileImageView: UIImageView!
-    
-    // MARK: - Private
-    
-    private weak var sendingImageView: UIImageView!
-    private weak var failedButton: UIButton!
 }
