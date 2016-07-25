@@ -24,7 +24,7 @@ final class TextMessageCellViewModel {
         self.text = message.text
         self.attributedText = message.text.attributed {
             TextAttributes()
-                .foregroundColor(UIColor.whiteColor())
+                .foregroundColor(UIColor.lightGrayColor())
         }
         
         self.cacheKey = String(message.text.hash)

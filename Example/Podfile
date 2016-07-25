@@ -10,6 +10,7 @@ target 'BalloonUI_Example' do
   pod 'SwiftyJSON'
   pod 'TextAttributesUtil'
   pod 'Measure'
+  pod 'Reveal-iOS-SDK'
 
   target 'BalloonUI_Tests' do
     inherit! :search_paths

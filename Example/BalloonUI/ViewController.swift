@@ -67,6 +67,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
         }
     }
     
+    
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
         var measure = Measure(name: ", Sizing, ", threshold: 0.005)

@@ -51,7 +51,7 @@ final class TextMessageLeftCell: TextMessageCell {
         
         self.backgroundColor = UIColor.whiteColor()
         
-        let _label = BalloonLabel().then {
+        let _label = Balloon().then {
             $0.type = .Left
             $0.balloonColor = UIColor(red:0.88, green:0.26, blue:0.35, alpha:1.00)
             $0.preferredMaxLayoutWidth = UIScreen.mainScreen().bounds.width - 100

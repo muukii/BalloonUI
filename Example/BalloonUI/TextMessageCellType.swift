@@ -10,9 +10,11 @@ import Foundation
 import Reusable
 import BalloonUI
 
+typealias Balloon = BalloonLabel
+
 class TextMessageCell: UICollectionViewCell, Reusable {
     
-    weak var label: BalloonLabel!
+    weak var label: Balloon!
     
     func update(viewModel viewModel: TextMessageCellViewModel, updateType: UpdateType) {
         
