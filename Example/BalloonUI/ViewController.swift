@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Measure
 
 class ViewController: UIViewController {
     
@@ -26,7 +27,7 @@ class ViewController: UIViewController {
     
     @IBOutlet private weak var collectionView: UICollectionView!
     
-    lazy var messages: [Message] = Message.importFromJSON()
+    lazy var messages: [TextMessageCellViewModel] = Message.importToViewModelFromJSON()
 }
 
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -41,33 +42,47 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
+        var measure = Measure(name: ", Normal, ", threshold: 0.005)
+        measure.start()
+        
+        defer {
+            measure.end()
+        }
+        
         let message = messages[indexPath.item]
         
-        if message.fromMe {
+        if message.message.fromMe {
             
             let cell = collectionView.dequeueReusableCell(indexPath: indexPath, cellType: TextMessageRightCell.self)
             
-            cell.update(viewModel: TextMessageCellViewModel(message: message), updateType: .Normal)
+            cell.update(viewModel: message, updateType: .Normal)
             return cell
         }
         else {
             
             let cell = collectionView.dequeueReusableCell(indexPath: indexPath, cellType: TextMessageLeftCell.self)
             
-            cell.update(viewModel: TextMessageCellViewModel(message: message), updateType: .Normal)
+            cell.update(viewModel: message, updateType: .Normal)
             return cell
         }
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
+        var measure = Measure(name: ", Sizing, ", threshold: 0.005)
+        measure.start()
+        
+        defer {
+            measure.end()
+        }
+        
         let message = messages[indexPath.item]
 
-        if message.fromMe {
-            return TextMessageRightCell.sizeForItem(collectionView: collectionView, viewModel: TextMessageCellViewModel(message: message))
+        if message.message.fromMe {
+            return TextMessageRightCell.sizeForItem(collectionView: collectionView, viewModel: message)
         }
         else {
-            return TextMessageLeftCell.sizeForItem(collectionView: collectionView, viewModel: TextMessageCellViewModel(message: message))
+            return TextMessageLeftCell.sizeForItem(collectionView: collectionView, viewModel: message)
         }
     }
     

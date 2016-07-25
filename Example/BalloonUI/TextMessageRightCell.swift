@@ -33,17 +33,6 @@ final class TextMessageRightCell: TextMessageCell {
         }
     }
     
-    func update(viewModel viewModel: TextMessageCellViewModel, updateType: UpdateType) {
-        
-        var measure = Measure(name: "Right: \(updateType)", threshold: 1 / 60)
-        measure.start()
-        
-        label?.attributedText = viewModel.attributedText
-        contentView.invalidateIntrinsicContentSize()
-        
-        measure.end()
-    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setup()
@@ -51,11 +40,6 @@ final class TextMessageRightCell: TextMessageCell {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        label?.attributedText = nil
     }
     
     override func layoutSublayersOfLayer(layer: CALayer) {
@@ -85,12 +69,4 @@ final class TextMessageRightCell: TextMessageCell {
         
         label = _label
     }
-    
-    weak var label: BalloonLabel!
-    weak var profileImageView: UIImageView!
-    
-    // MARK: - Private
-    
-    private weak var sendingImageView: UIImageView!
-    private weak var failedButton: UIButton!
 }

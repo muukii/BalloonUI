@@ -26,8 +26,14 @@ import UIKit
 public final class BalloonLabelTextView: UITextView {
     
     public var preferredMaxLayoutWidth: CGFloat = 100
-    
+        
     public override func intrinsicContentSize() -> CGSize {
+        
+//        let targetSize = CGSize(width: self.preferredMaxLayoutWidth, height: CGFloat.infinity)
+//        
+//        let size = self.attributedText.boundingRectWithSize(targetSize, options: [.UsesLineFragmentOrigin, .UsesFontLeading], context: nil).size
+//        
+//        return size
         
         let size = self.sizeThatFits(CGSize(width: self.preferredMaxLayoutWidth, height: CGFloat.infinity))
         return size

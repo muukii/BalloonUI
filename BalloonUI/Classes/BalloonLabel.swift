@@ -128,6 +128,15 @@ public class BalloonLabel: BalloonView {
         }
     }
     
+    public var text: String? {
+        get {
+            return self.label.text
+        }
+        set {
+            self.label.text = newValue
+        }
+    }
+    
     public var attributedText: NSAttributedString? {
         get {
             return self.label.attributedText
@@ -138,16 +147,6 @@ public class BalloonLabel: BalloonView {
             
             guard let text = newValue else {
                 return
-            }
-            
-            if self.enableCenteringCharactor == true && text.string.characters.count == 1 {
-                if self.label.textAlignment != .Center {
-                    self.label.textAlignment = .Center
-                }
-            } else {
-                if self.label.textAlignment != .Left {
-                    self.label.textAlignment = .Left
-                }
             }
             
             self.invalidateIntrinsicContentSize()
