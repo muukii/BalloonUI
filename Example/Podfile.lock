@@ -2,6 +2,7 @@ PODS:
   - BalloonUI (0.1.0):
     - Cartography
   - Cartography (0.6.0)
+  - Measure (0.1.1)
   - Reusable (2.4.0):
     - Reusable/Storyboard (= 2.4.0)
     - Reusable/View (= 2.4.0)
@@ -17,6 +18,7 @@ PODS:
 DEPENDENCIES:
   - BalloonUI (from `../`)
   - Cartography
+  - Measure
   - Reusable
   - SwiftyJSON
   - TextAttributesUtil
@@ -28,8 +30,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  BalloonUI: bdc2a458ac26402152563015000934cdb1a5ffda
+  BalloonUI: 5e544b753b87565442080ae7f6567260392672e2
   Cartography: 70af183a248547694a8cfaa6b989cb7e04589985
+  Measure: 52588f43f4d1ef22ab4ea3c77ea147225587b09c
   Reusable: c23110dd77e6d3cb2ee2197289ef5e21005ba8f0
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   TextAttributes: b43233c6356a72f1c1e483d5bda694535432a4be
@@ -37,6 +40,6 @@ SPEC CHECKSUMS:
   Then: c2502b763132c80dfa64d325065d70c45e2d48ca
   ViewSizeCalculator: 9986a89bc4edecc795f7a2acdc61c3e683baf8c1
 
-PODFILE CHECKSUM: 423cac7f882d02fa59ef593b4fcc28b1e78a5100
+PODFILE CHECKSUM: e8473782ac35dd2d4e36ed94192b3679f57ec954
 
 COCOAPODS: 1.0.1

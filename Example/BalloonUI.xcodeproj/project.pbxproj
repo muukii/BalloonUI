@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		01A788A85C2E1C637A7B127F /* Pods_BalloonUI_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B36C7ED80C18FCF67FF32F7 /* Pods_BalloonUI_Tests.framework */; };
 		3CCC5DBDB3FA8DA1EC918313 /* Pods_BalloonUI_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F21FE1CDF2E8AF950B46C5B /* Pods_BalloonUI_Example.framework */; };
-		4B0683B61D4504C9005BB489 /* Measure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0683B51D4504C9005BB489 /* Measure.swift */; };
 		4B0683B81D450509005BB489 /* TextMessageCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0683B71D450509005BB489 /* TextMessageCellType.swift */; };
 		4BB414A61D44973C0008B967 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB414A51D44973C0008B967 /* Message.swift */; };
 		4BB414A81D44996B0008B967 /* TextMessageRightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB414A71D44996B0008B967 /* TextMessageRightCell.swift */; };
@@ -40,7 +39,6 @@
 		2E1A0F67F0A6DE8E2D53D6C2 /* Pods-BalloonUI_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BalloonUI_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BalloonUI_Tests/Pods-BalloonUI_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		332F5AA5633C4F5C0F4458FF /* Pods-BalloonUI_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BalloonUI_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BalloonUI_Example/Pods-BalloonUI_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		4A0BEBE531F7676E07DB3B61 /* Pods-BalloonUI_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BalloonUI_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BalloonUI_Tests/Pods-BalloonUI_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		4B0683B51D4504C9005BB489 /* Measure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Measure.swift; sourceTree = "<group>"; };
 		4B0683B71D450509005BB489 /* TextMessageCellType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextMessageCellType.swift; sourceTree = "<group>"; };
 		4BB414A51D44973C0008B967 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		4BB414A71D44996B0008B967 /* TextMessageRightCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextMessageRightCell.swift; sourceTree = "<group>"; };
@@ -129,7 +127,6 @@
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
-				4B0683B51D4504C9005BB489 /* Measure.swift */,
 				4B0683B71D450509005BB489 /* TextMessageCellType.swift */,
 				4BB414A71D44996B0008B967 /* TextMessageRightCell.swift */,
 				4BB414A91D449B760008B967 /* TextMessageLeftCell.swift */,
@@ -382,7 +379,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B0683B81D450509005BB489 /* TextMessageCellType.swift in Sources */,
-				4B0683B61D4504C9005BB489 /* Measure.swift in Sources */,
 				4BB414AE1D44A30B0008B967 /* TextMessageCellViewModel.swift in Sources */,
 				4BB414AA1D449B760008B967 /* TextMessageLeftCell.swift in Sources */,
 				4BB414A61D44973C0008B967 /* Message.swift in Sources */,
@@ -520,6 +516,7 @@
 				INFOPLIST_FILE = BalloonUI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -533,6 +530,7 @@
 				INFOPLIST_FILE = BalloonUI/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

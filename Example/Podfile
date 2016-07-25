@@ -9,6 +9,7 @@ target 'BalloonUI_Example' do
   pod 'Then'
   pod 'SwiftyJSON'
   pod 'TextAttributesUtil'
+  pod 'Measure'
 
   target 'BalloonUI_Tests' do
     inherit! :search_paths

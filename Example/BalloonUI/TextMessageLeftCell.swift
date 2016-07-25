@@ -15,6 +15,7 @@ import Cartography
 import Reusable
 import ViewSizeCalculator
 import Then
+import Measure
 
 final class TextMessageLeftCell: TextMessageCell {
     
@@ -35,7 +36,7 @@ final class TextMessageLeftCell: TextMessageCell {
     
     func update(viewModel viewModel: TextMessageCellViewModel, updateType: UpdateType) {
         
-        var measure = Measure(name: "Left: \(updateType)")
+        var measure = Measure(name: "Left: \(updateType)", threshold: 1 / 60)
         measure.start()
         
         label?.attributedText = viewModel.attributedText
