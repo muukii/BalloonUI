@@ -62,6 +62,8 @@ public class BalloonLabel: BalloonView {
         label.delegate = self
         label.backgroundColor = UIColor.clearColor()
         label.dataDetectorTypes = UIDataDetectorTypes.Link
+        label.layer.drawsAsynchronously = true
+        label.clearsContextBeforeDrawing = false
         
         addSubview(label)
         
@@ -87,6 +89,16 @@ public class BalloonLabel: BalloonView {
     
     public override func intrinsicContentSize() -> CGSize {
         
+        struct Static {
+            static let cache = NSCache()
+        }
+        
+        let cacheKey = "\(label.attributedText.hashValue)|\(preferredMaxLayoutWidth)"
+        
+        if let size = (Static.cache.objectForKey(cacheKey) as? NSValue)?.CGSizeValue() {
+            return size
+        }
+        
         let targetSize = CGSize(width: self.preferredMaxLayoutWidth, height: CGFloat.infinity)
         let size = label.attributedText.boundingRectWithSize(targetSize, options: [.UsesLineFragmentOrigin, .UsesFontLeading], context: nil).size
         
@@ -99,6 +111,9 @@ public class BalloonLabel: BalloonView {
             width: width + (leftOffset + rightOffset) + (label.textContainerInset.right + label.textContainerInset.left),
             height: height + (label.textContainerInset.top + label.textContainerInset.bottom)
         )
+        
+        Static.cache.setObject(NSValue(CGSize: roundedSize), forKey: cacheKey)
+        
         return roundedSize
     }
     
