@@ -3,7 +3,6 @@ use_frameworks!
 target 'BalloonUI_Example' do
 
   pod 'Reusable'
-  pod 'Cartography'
   pod 'BalloonUI', :path => '../'
   pod 'ViewSizeCalculator'
   pod 'Then'

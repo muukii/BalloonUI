@@ -21,7 +21,6 @@
 // THE SOFTWARE.
 
 import UIKit
-import Cartography
 
 public class BalloonLabel: BalloonView {
     

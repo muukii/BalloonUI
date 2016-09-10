@@ -9,8 +9,7 @@
 import Foundation
 
 import BalloonUI
-
-import Cartography
+import EasyPeasy
 import Reusable
 import ViewSizeCalculator
 import Then
@@ -59,13 +58,12 @@ final class TextMessageRightCell: TextMessageCell {
         
         contentView.addSubview(_label)
         
-        constrain(_label) { label in
-            let superview = label.superview!
-            label.left >= superview.left
-            label.right == superview.right - 4
-            label.top == superview.top + 4
-            label.bottom == superview.bottom - 4
-        }
+        _label <- [
+            Top(4),
+            Right(4),
+            Bottom(4),
+            Left(>=0),
+        ]
         
         label = _label
     }
