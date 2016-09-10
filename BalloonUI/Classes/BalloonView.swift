@@ -78,9 +78,12 @@ public class BalloonView: UIView {
     }
     
     public func configureView() {
-        self.opaque = false
-        self.layer.rasterizationScale = UIScreen.mainScreen().scale
-        self.layer.shouldRasterize = true
+        
+        self.opaque = true
+        
+        self.layer.drawsAsynchronously = true
+//        self.layer.rasterizationScale = UIScreen.mainScreen().scale
+//        self.layer.shouldRasterize = true
         
         let minWidth = NSLayoutConstraint(
             item: self,
