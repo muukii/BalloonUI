@@ -27,7 +27,7 @@ public final class BalloonLabelTextView: UITextView {
     
     public var preferredMaxLayoutWidth: CGFloat = 100
         
-    public override func intrinsicContentSize() -> CGSize {
+    public override var intrinsicContentSize : CGSize {
         
 
         
@@ -35,15 +35,15 @@ public final class BalloonLabelTextView: UITextView {
         return size
     }
     
-    public override func canBecomeFirstResponder() -> Bool {
+    public override var canBecomeFirstResponder : Bool {
         return false
     }
-    
-    public override func nextResponder() -> UIResponder? {
+        
+    public override var next: UIResponder? {
         return self.superview
     }
     
-    public override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
+    public override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         
         /// - [ios7 - リンクが押せるテキストをTableViewCellに配置する - Qiita](http://qiita.com/fmtonakai/items/669fe461fd9673dc8e50)
         
@@ -51,19 +51,19 @@ public final class BalloonLabelTextView: UITextView {
         p.y -= self.textContainerInset.top
         p.x -= self.textContainerInset.left
         
-        let i = self.layoutManager.characterIndexForPoint(p, inTextContainer: self.textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
+        let i = self.layoutManager.characterIndex(for: p, in: self.textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
         
         var range = NSRange(location: 0, length: 0)
-        let attr = self.textStorage.attributesAtIndex(i, effectiveRange: &range)
+        let attr = self.textStorage.attributes(at: i, effectiveRange: &range)
         
         if attr[NSLinkAttributeName] != nil {
             var touchingLink = false
-            let glyphIndex = self.layoutManager.glyphIndexForCharacterAtIndex(i)
-            self.layoutManager.enumerateLineFragmentsForGlyphRange(NSRange(location: glyphIndex, length: 1), usingBlock: { (rect, usedRect, container, glyphRange, stop) -> Void in
+            let glyphIndex = self.layoutManager.glyphIndexForCharacter(at: i)
+            self.layoutManager.enumerateLineFragments(forGlyphRange: NSRange(location: glyphIndex, length: 1), using: { (rect, usedRect, container, glyphRange, stop) -> Void in
                 
-                if CGRectContainsPoint(usedRect, p) {
+                if usedRect.contains(p) {
                     touchingLink = true
-                    stop.memory = true
+                    stop.pointee = true
                 }
             })
             return (touchingLink) ? self : nil
@@ -71,7 +71,7 @@ public final class BalloonLabelTextView: UITextView {
         return nil
     }
     
-    public override func selectionRectsForRange(range: UITextRange) -> [AnyObject] {
+    public override func selectionRects(for range: UITextRange) -> [Any] {
         return []
     }
 }

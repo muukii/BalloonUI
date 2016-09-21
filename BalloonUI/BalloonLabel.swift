@@ -22,30 +22,30 @@
 
 import UIKit
 
-public class BalloonLabel: BalloonView {
+open class BalloonLabel: BalloonView {
     
-    public var didTapUrl: ((url: NSURL) -> Void)?
-    public var enableCenteringCharactor: Bool = true
+    open var didTapUrl: ((_ url: URL) -> Void)?
+    open var enableCenteringCharactor: Bool = true
     
-    public var leftOffset: CGFloat {
+    open var leftOffset: CGFloat {
         switch self.type {
-        case .Left:
+        case .left:
             return 5.0
-        case .Right:
+        case .right:
             return 0.0
         }
     }
     
-    public var rightOffset: CGFloat {
+    open var rightOffset: CGFloat {
         switch self.type {
-        case .Left:
+        case .left:
             return 0.0
-        case .Right:
+        case .right:
             return 5.0
         }
     }
     
-    public override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         
         var frame = bounds
@@ -56,11 +56,11 @@ public class BalloonLabel: BalloonView {
         label.frame = frame
     }
     
-    public override func configureView() {
+    open override func configureView() {
         super.configureView()
         label.delegate = self
-        label.backgroundColor = UIColor.clearColor()
-        label.dataDetectorTypes = UIDataDetectorTypes.Link
+        label.backgroundColor = UIColor.clear
+        label.dataDetectorTypes = UIDataDetectorTypes.link
         label.layer.drawsAsynchronously = true
         label.clearsContextBeforeDrawing = false
         
@@ -70,13 +70,13 @@ public class BalloonLabel: BalloonView {
         addGestureRecognizer(gesture)
     }
     
-    public var preferredMaxLayoutWidth: CGFloat = 0 {
+    open var preferredMaxLayoutWidth: CGFloat = 0 {
         didSet {
             self.label.preferredMaxLayoutWidth = self.preferredMaxLayoutWidth
         }
     }
     
-    public var attributedText: NSAttributedString? {
+    open var attributedText: NSAttributedString? {
         get {
             return self.label.attributedText
         }
@@ -86,22 +86,22 @@ public class BalloonLabel: BalloonView {
         }
     }
     
-    public override func intrinsicContentSize() -> CGSize {
+    open override var intrinsicContentSize : CGSize {
         
         struct Static {
-            static let cache = NSCache()
+            static let cache = NSCache<NSString, NSValue>()
         }
         
         let cacheKey = "\(label.attributedText.hashValue)|\(preferredMaxLayoutWidth)"
         
-        if let size = (Static.cache.objectForKey(cacheKey) as? NSValue)?.CGSizeValue() {
+        if let size = Static.cache.object(forKey: cacheKey as NSString)?.cgSizeValue {
             return size
         }
         
         let targetSize = CGSize(width: self.preferredMaxLayoutWidth, height: CGFloat.infinity)
-        let size = label.attributedText.boundingRectWithSize(targetSize, options: [.UsesLineFragmentOrigin, .UsesFontLeading], context: nil).size
+        let size = label.attributedText.boundingRect(with: targetSize, options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil).size
         
-        let scale = UIScreen.mainScreen().scale
+        let scale = UIScreen.main.scale
         
         let width = ceil(size.width * scale) * (1.0 / scale)
         let height = ceil(size.height * scale) * (1.0 / scale)
@@ -111,16 +111,16 @@ public class BalloonLabel: BalloonView {
             height: height + (label.textContainerInset.top + label.textContainerInset.bottom)
         )
         
-        Static.cache.setObject(NSValue(CGSize: roundedSize), forKey: cacheKey)
+        Static.cache.setObject(NSValue(cgSize: roundedSize), forKey: cacheKey as NSString)
         
         return roundedSize
     }
     
     
-    private let label: BalloonLabelTextView = {
+    fileprivate let label: BalloonLabelTextView = {
         let textView = BalloonLabelTextView(frame: CGRect.zero)
-        textView.scrollEnabled = false
-        textView.editable = false
+        textView.isScrollEnabled = false
+        textView.isEditable = false
         textView.showsHorizontalScrollIndicator = false
         textView.showsVerticalScrollIndicator = false
         textView.textContainerInset = UIEdgeInsetsMake(8, 8, 8, 8)
@@ -128,24 +128,24 @@ public class BalloonLabel: BalloonView {
         textView.layoutManager.allowsNonContiguousLayout = true
         
         textView.linkTextAttributes = [
-            NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue,
-            NSForegroundColorAttributeName: UIColor.blueColor()
+            NSUnderlineStyleAttributeName: NSUnderlineStyle.styleSingle.rawValue,
+            NSForegroundColorAttributeName: UIColor.blue
         ]
         return textView
     }()
     
     // MARK: UIResponder
     
-    private dynamic func handleLongPressGesture(sender: UILongPressGestureRecognizer) {
+    fileprivate dynamic func handleLongPressGesture(_ sender: UILongPressGestureRecognizer) {
         
         guard let view = sender.view else {
             
             return
         }
-        if case .Began = sender.state {
+        if case .began = sender.state {
             view.becomeFirstResponder()
-            let menuController = UIMenuController.sharedMenuController()
-            menuController.setTargetRect(view.frame, inView: view.superview!)
+            let menuController = UIMenuController.shared
+            menuController.setTargetRect(view.frame, in: view.superview!)
             menuController.setMenuVisible(true, animated: true)
             
             // TODO: 
@@ -163,13 +163,13 @@ public class BalloonLabel: BalloonView {
 
 extension BalloonLabel: UITextViewDelegate {
     
-    public func textView(textView: UITextView, shouldInteractWithURL URL: NSURL, inRange characterRange: NSRange) -> Bool {
+    public func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
         
-        didTapUrl?(url: URL)
+        didTapUrl?(URL)
         return false
     }
     
-    public func textView(textView: UITextView, shouldInteractWithTextAttachment textAttachment: NSTextAttachment, inRange characterRange: NSRange) -> Bool {
+    public func textView(_ textView: UITextView, shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange) -> Bool {
         return false
     }
 }

@@ -1,0 +1,5 @@
+github "muukii/Instantiatable"
+github "muukii/TextAttributesUtil"
+github "muukii/ViewSizeCalculator"
+github "muukii/Measure"
+github "devxoul/Then"

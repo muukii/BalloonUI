@@ -1,5 +1,5 @@
 //
-//  TextMessageRightCell.swift
+//  TextMessageLeftCell.swift
 //  BalloonUI
 //
 //  Created by muukii on 7/24/16.
@@ -8,21 +8,22 @@
 
 import Foundation
 
+
 import BalloonUI
 import EasyPeasy
-import Reusable
+import Instantiatable
 import ViewSizeCalculator
 import Then
 import Measure
 
-final class TextMessageRightCell: TextMessageCell {
+final class TextMessageLeftCell: TextMessageCell {
     
     // MARK: - Public
     
-    class func sizeForItem(collectionView collectionView: UICollectionView, viewModel: TextMessageCellViewModel) -> CGSize {
+    class func sizeForItem(collectionView: UICollectionView, viewModel: TextMessageCellViewModel) -> CGSize {
         
         struct Static {
-            static let cal = ViewSizeCalculator(sourceView: TextMessageRightCell(frame: CGRect(x: 0, y: 0, width: 0, height: 0))) { cell in
+            static let cal = ViewSizeCalculator(sourceView: TextMessageLeftCell(frame: CGRect(x: 0, y: 0, width: 0, height: 0))) { cell in
                 return cell.contentView
             }
         }
@@ -50,19 +51,19 @@ final class TextMessageRightCell: TextMessageCell {
         self.backgroundColor = UIColor.whiteColor()
         
         let _label = Balloon().then {
-            $0.type = .Right
-            $0.balloonColor = UIColor(red:0.56, green:0.84, blue:0.92, alpha:1.00)
+            $0.type = .Left
+            $0.balloonColor = UIColor(red:0.88, green:0.26, blue:0.35, alpha:1.00)
             $0.preferredMaxLayoutWidth = UIScreen.mainScreen().bounds.width - 100
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
         contentView.addSubview(_label)
-        
+                
         _label <- [
             Top(4),
-            Right(4),
+            Right(>=4),
             Bottom(4),
-            Left(>=0),
+            Left(4),
         ]
         
         label = _label
