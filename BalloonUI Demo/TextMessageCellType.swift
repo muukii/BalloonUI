@@ -7,16 +7,16 @@
 //
 
 import Foundation
-import Reusable
+import Instantiatable
 import BalloonUI
 
 typealias Balloon = BalloonLabel
 
-class TextMessageCell: UICollectionViewCell, Reusable {
+class TextMessageCell: UICollectionViewCell {
     
     weak var label: Balloon!
     
-    func update(viewModel viewModel: TextMessageCellViewModel, updateType: UpdateType) {
+    func update(viewModel: TextMessageCellViewModel, updateType: UpdateType) {
         
         label?.attributedText = viewModel.attributedText
 //        label.text = viewModel.text

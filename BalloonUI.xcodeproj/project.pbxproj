@@ -24,6 +24,8 @@
 		4B3ABE4A1D9296C2004435EC /* Measure.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4B3ABE481D9296C2004435EC /* Measure.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4B3ABE4D1D929914004435EC /* JAYSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B3ABE4B1D92990F004435EC /* JAYSON.framework */; };
 		4B3ABE4F1D92991D004435EC /* JAYSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4B3ABE4B1D92990F004435EC /* JAYSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4B3ABE511D92A13D004435EC /* EasyPeasy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B3ABE2F1D9292F2004435EC /* EasyPeasy.framework */; };
+		4B3ABE521D92A13D004435EC /* EasyPeasy.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4B3ABE2F1D9292F2004435EC /* EasyPeasy.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4B76607A1D928F1800491445 /* BalloonUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B7660781D928F1800491445 /* BalloonUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4B7660831D928F3500491445 /* BalloonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7660801D928F3500491445 /* BalloonLabel.swift */; };
 		4B7660841D928F3500491445 /* BalloonLabelTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7660811D928F3500491445 /* BalloonLabelTextView.swift */; };
@@ -31,9 +33,7 @@
 		4B7660AE1D928F7B00491445 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B76609D1D928F7B00491445 /* AppDelegate.swift */; };
 		4B7660AF1D928F7B00491445 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B76609E1D928F7B00491445 /* Assets.xcassets */; };
 		4B7660B01D928F7B00491445 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B76609F1D928F7B00491445 /* LaunchScreen.storyboard */; };
-		4B7660B11D928F7B00491445 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B7660A11D928F7B00491445 /* LaunchScreen.xib */; };
 		4B7660B21D928F7B00491445 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B7660A31D928F7B00491445 /* Main.storyboard */; };
-		4B7660B31D928F7B00491445 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B7660A51D928F7B00491445 /* Images.xcassets */; };
 		4B7660B41D928F7B00491445 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B7660A61D928F7B00491445 /* Info.plist */; };
 		4B7660B51D928F7B00491445 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7660A71D928F7B00491445 /* Message.swift */; };
 		4B7660B61D928F7B00491445 /* messages.json in Resources */ = {isa = PBXBuildFile; fileRef = 4B7660A81D928F7B00491445 /* messages.json */; };
@@ -61,6 +61,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				4B3ABE521D92A13D004435EC /* EasyPeasy.framework in Embed Frameworks */,
 				4B3ABE4F1D92991D004435EC /* JAYSON.framework in Embed Frameworks */,
 				4B3ABE361D9292FA004435EC /* TextAttributesUtil.framework in Embed Frameworks */,
 				4B3ABE441D929640004435EC /* ViewSizeCalculator.framework in Embed Frameworks */,
@@ -94,9 +95,7 @@
 		4B76609D1D928F7B00491445 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B76609E1D928F7B00491445 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4B7660A01D928F7B00491445 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		4B7660A21D928F7B00491445 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		4B7660A41D928F7B00491445 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		4B7660A51D928F7B00491445 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4B7660A61D928F7B00491445 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B7660A71D928F7B00491445 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		4B7660A81D928F7B00491445 /* messages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = messages.json; sourceTree = "<group>"; };
@@ -120,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B3ABE511D92A13D004435EC /* EasyPeasy.framework in Frameworks */,
 				4B3ABE4D1D929914004435EC /* JAYSON.framework in Frameworks */,
 				4B3ABE351D9292FA004435EC /* TextAttributesUtil.framework in Frameworks */,
 				4B3ABE431D929640004435EC /* ViewSizeCalculator.framework in Frameworks */,
@@ -186,9 +186,7 @@
 				4B76609D1D928F7B00491445 /* AppDelegate.swift */,
 				4B76609E1D928F7B00491445 /* Assets.xcassets */,
 				4B76609F1D928F7B00491445 /* LaunchScreen.storyboard */,
-				4B7660A11D928F7B00491445 /* LaunchScreen.xib */,
 				4B7660A31D928F7B00491445 /* Main.storyboard */,
-				4B7660A51D928F7B00491445 /* Images.xcassets */,
 				4B7660A61D928F7B00491445 /* Info.plist */,
 				4B7660A71D928F7B00491445 /* Message.swift */,
 				4B7660A81D928F7B00491445 /* messages.json */,
@@ -307,9 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B7660AF1D928F7B00491445 /* Assets.xcassets in Resources */,
-				4B7660B31D928F7B00491445 /* Images.xcassets in Resources */,
 				4B7660B41D928F7B00491445 /* Info.plist in Resources */,
-				4B7660B11D928F7B00491445 /* LaunchScreen.xib in Resources */,
 				4B7660B61D928F7B00491445 /* messages.json in Resources */,
 				4B7660B01D928F7B00491445 /* LaunchScreen.storyboard in Resources */,
 				4B7660B21D928F7B00491445 /* Main.storyboard in Resources */,
@@ -360,14 +356,6 @@
 				4B7660A01D928F7B00491445 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		4B7660A11D928F7B00491445 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4B7660A21D928F7B00491445 /* Base */,
-			);
-			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 		4B7660A31D928F7B00491445 /* Main.storyboard */ = {
@@ -541,7 +529,6 @@
 					"$(USER_LIBRARY_DIR)/Mobile\\ Documents/com~apple~CloudDocs/CloudDevelop/iOS/BalloonUI/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "BalloonUI Demo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.muukii.BalloonUI-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -561,7 +548,6 @@
 					"$(USER_LIBRARY_DIR)/Mobile\\ Documents/com~apple~CloudDocs/CloudDevelop/iOS/BalloonUI/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "BalloonUI Demo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.muukii.BalloonUI-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";

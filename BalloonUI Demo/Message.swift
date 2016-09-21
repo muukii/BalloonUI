@@ -20,26 +20,26 @@ extension Message {
     
     static func importFromJSON() -> [Message] {
         
-        let path = NSBundle.mainBundle().pathForResource("messages", ofType: "json")!
-        let data = NSData(contentsOfFile: path)!        
-        let json = JSON(data: data)
+        let path = Bundle.main.path(forResource: "messages", ofType: "json")!
+        let data = try! Data(contentsOf: URL(fileURLWithPath: path))
+        let json = try! JAYSON(data: data)
         
-        return json["data"].arrayValue.map { json -> Message in
+        return try! json.next("data").getArray().map { json -> Message in
             
-            Message(fromMe: json["fromMe"].boolValue, text: json["text"].stringValue)            
+            Message(fromMe: try! json.next("fromMe").getBool(), text: try! json.next("text").getString())
         }
     }
     
     static func importToViewModelFromJSON() -> [TextMessageCellViewModel] {
         
-        let path = NSBundle.mainBundle().pathForResource("messages", ofType: "json")!
-        let data = NSData(contentsOfFile: path)!
-        let json = JSON(data: data)
+        let path = Bundle.main.path(forResource: "messages", ofType: "json")!
+        let data = try! Data(contentsOf: URL(fileURLWithPath: path))
+        let json = try! JAYSON(data: data)
         
-        return json.["data"].array?.map { json -> TextMessageCellViewModel in
+        return try! json.next("data").getArray().map { json -> TextMessageCellViewModel in
             
             TextMessageCellViewModel(message:
-                Message(fromMe: json["fromMe"].boolValue, text: json["text"].stringValue)
+                Message(fromMe: try! json.next("fromMe").getBool(), text: try! json.next("text").getString())
             )
         }
     }

@@ -25,10 +25,11 @@ final class TextMessageCellViewModel {
         
         self.attributedText = NSMutableAttributedString(attributedString: message.text.attributed {
             TextAttributes()
-                .foregroundColor(UIColor.lightGrayColor())
-                .font(UIFont.systemFontOfSize(16))
+                .foregroundColor(UIColor.lightGray)
+                .font(UIFont.systemFont(ofSize: 16))
             }
         )
+        
         self.cacheKey = String(message.text.hash)
     }
 }

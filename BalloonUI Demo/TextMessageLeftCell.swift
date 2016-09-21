@@ -16,7 +16,7 @@ import ViewSizeCalculator
 import Then
 import Measure
 
-final class TextMessageLeftCell: TextMessageCell {
+final class TextMessageLeftCell: TextMessageCell, Reusable {
     
     // MARK: - Public
     
@@ -42,18 +42,18 @@ final class TextMessageLeftCell: TextMessageCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSublayersOfLayer(layer: CALayer) {
-        super.layoutSublayersOfLayer(layer)
+    override func layoutSublayers(of layer: CALayer) {
+        super.layoutSublayers(of: layer)
     }
     
     func setup() {
         
-        self.backgroundColor = UIColor.whiteColor()
+        self.backgroundColor = UIColor.white
         
         let _label = Balloon().then {
-            $0.type = .Left
+            $0.type = .left
             $0.balloonColor = UIColor(red:0.88, green:0.26, blue:0.35, alpha:1.00)
-            $0.preferredMaxLayoutWidth = UIScreen.mainScreen().bounds.width - 100
+            $0.preferredMaxLayoutWidth = UIScreen.main.bounds.width - 100
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
