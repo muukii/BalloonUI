@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import SwiftyJSON
+import JAYSON
 
 struct Message {
     
@@ -36,7 +36,7 @@ extension Message {
         let data = NSData(contentsOfFile: path)!
         let json = JSON(data: data)
         
-        return json["data"].arrayValue.map { json -> TextMessageCellViewModel in
+        return json.["data"].array?.map { json -> TextMessageCellViewModel in
             
             TextMessageCellViewModel(message:
                 Message(fromMe: json["fromMe"].boolValue, text: json["text"].stringValue)

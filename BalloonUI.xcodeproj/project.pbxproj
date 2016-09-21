@@ -22,6 +22,8 @@
 		4B3ABE471D9296AC004435EC /* Then.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4B3ABE451D9296AC004435EC /* Then.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4B3ABE491D9296C2004435EC /* Measure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B3ABE481D9296C2004435EC /* Measure.framework */; };
 		4B3ABE4A1D9296C2004435EC /* Measure.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4B3ABE481D9296C2004435EC /* Measure.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4B3ABE4D1D929914004435EC /* JAYSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B3ABE4B1D92990F004435EC /* JAYSON.framework */; };
+		4B3ABE4F1D92991D004435EC /* JAYSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4B3ABE4B1D92990F004435EC /* JAYSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4B76607A1D928F1800491445 /* BalloonUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B7660781D928F1800491445 /* BalloonUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4B7660831D928F3500491445 /* BalloonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7660801D928F3500491445 /* BalloonLabel.swift */; };
 		4B7660841D928F3500491445 /* BalloonLabelTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7660811D928F3500491445 /* BalloonLabelTextView.swift */; };
@@ -59,6 +61,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				4B3ABE4F1D92991D004435EC /* JAYSON.framework in Embed Frameworks */,
 				4B3ABE361D9292FA004435EC /* TextAttributesUtil.framework in Embed Frameworks */,
 				4B3ABE441D929640004435EC /* ViewSizeCalculator.framework in Embed Frameworks */,
 				4B3ABE341D9292FA004435EC /* TextAttributes.framework in Embed Frameworks */,
@@ -80,6 +83,7 @@
 		4B3ABE421D929640004435EC /* ViewSizeCalculator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ViewSizeCalculator.framework; path = Carthage/Build/iOS/ViewSizeCalculator.framework; sourceTree = "<group>"; };
 		4B3ABE451D9296AC004435EC /* Then.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Then.framework; path = Carthage/Build/iOS/Then.framework; sourceTree = "<group>"; };
 		4B3ABE481D9296C2004435EC /* Measure.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Measure.framework; path = Carthage/Build/iOS/Measure.framework; sourceTree = "<group>"; };
+		4B3ABE4B1D92990F004435EC /* JAYSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JAYSON.framework; path = Carthage/Build/iOS/JAYSON.framework; sourceTree = "<group>"; };
 		4B7660751D928F1800491445 /* BalloonUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BalloonUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B7660781D928F1800491445 /* BalloonUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BalloonUI.h; sourceTree = "<group>"; };
 		4B7660791D928F1800491445 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -116,6 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B3ABE4D1D929914004435EC /* JAYSON.framework in Frameworks */,
 				4B3ABE351D9292FA004435EC /* TextAttributesUtil.framework in Frameworks */,
 				4B3ABE431D929640004435EC /* ViewSizeCalculator.framework in Frameworks */,
 				4B3ABE331D9292FA004435EC /* TextAttributes.framework in Frameworks */,
@@ -132,6 +137,7 @@
 		4B3ABE2E1D9292F1004435EC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4B3ABE4B1D92990F004435EC /* JAYSON.framework */,
 				4B3ABE481D9296C2004435EC /* Measure.framework */,
 				4B3ABE451D9296AC004435EC /* Then.framework */,
 				4B3ABE421D929640004435EC /* ViewSizeCalculator.framework */,
